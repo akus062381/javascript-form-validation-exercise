@@ -29,7 +29,7 @@ form.addEventListener("submit", function(event) {
         //do something else if it is invalid
         console.log("Name field invalid")
         parentEl.classList.remove("input-valid")
-        nameLabel.textContent = "Name is required!"
+        nameLabel.textContent = "Name is required"
         parentEl.classList.add("input-invalid")
         formIsValid = false
     }
@@ -55,7 +55,7 @@ function validateCar() {
         console.log("Car field invalid")
         parentEl.classList.remove("input-valid")
         parentEl.classList.add("input-invalid")
-        carLabel.textContent = "Car information is required!"
+        carLabel.textContent = "Car information is required"
         formIsValid = false
     } else if (yearInfo !== "" && makeInfo !== "" && modelInfo !== "") {
         //do something if it is valid
@@ -69,22 +69,22 @@ function validateDate() {
     let dateInput = document.querySelector("#start-date")
     let dateInfo = dateInput.value 
     let parentEl = dateInput.parentElement
+    let currentDate = new Date();
+    dateInfo = new Date(dateInfo);
 
     document.getElementsByTagName("label")[2].setAttribute("id", "date-label");
     let dateLabel = document.querySelector("#date-label")
 
-    if (dateInfo) {
-        //do something if it is valid
+    if (dateInfo > currentDate) {
         console.log("Date field valid")
         parentEl.classList.remove("input-invalid")
         parentEl.classList.add("input-valid")
     } else {
-        //do something else if it is invalid
         console.log("Date field invalid")
         parentEl.classList.remove("input-valid")
-        dateLabel.textContent = "Date is required!"
+        dateLabel.textContent = "Enter a date in the future"
         parentEl.classList.add("input-invalid")
-        formIsValid = false
+        formIsValid = false 
     }
 }
 
@@ -105,7 +105,7 @@ function validateDays() {
         //do something else if it is invalid
         console.log("Days field invalid")
         parentEl.classList.remove("input-valid")
-        daysLabel.textContent = "Number of days is required!"
+        daysLabel.textContent = "Number of days is required"
         parentEl.classList.add("input-invalid")
         formIsValid = false
     }
@@ -128,7 +128,7 @@ function validateCard() {
         //do something else if it is invalid
         console.log("Card field invalid")
         parentEl.classList.remove("input-valid")
-        cardLabel.textContent = "Credit card information is required!"
+        cardLabel.textContent = "Credit card information is required"
         parentEl.classList.add("input-invalid")
         formIsValid = false
     }
@@ -151,7 +151,7 @@ function validateCvv() {
         //do something else if it is invalid
         console.log("Name field invalid")
         parentEl.classList.remove("input-valid")
-        cvvLabel.textContent = "CVV is required!"
+        cvvLabel.textContent = "CVV is required"
         parentEl.classList.add("input-invalid")
         formIsValid = false
     }
@@ -174,7 +174,7 @@ function validateExp() {
         //do something else if it is invalid
         console.log("Name field invalid")
         parentEl.classList.remove("input-valid")
-        expLabel.textContent = "Expiration date is required!"
+        expLabel.textContent = "Expiration date is required"
         parentEl.classList.add("input-invalid")
         formIsValid = false
     }
