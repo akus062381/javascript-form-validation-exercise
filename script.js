@@ -29,7 +29,7 @@ form.addEventListener("submit", function(event) {
         //do something else if it is invalid
         console.log("Name field invalid")
         parentEl.classList.remove("input-valid")
-        nameLabel.textContent = "Name is Required!"
+        nameLabel.textContent = "Name is required!"
         parentEl.classList.add("input-invalid")
         formIsValid = false
     }
@@ -38,23 +38,30 @@ form.addEventListener("submit", function(event) {
 function validateCar() {
     let yearInput = document.querySelector("#car-year")
     let yearInfo = yearInput.value 
-    let parentEl = yearInput.parentElement
+    let parentEl = document.querySelector("#car-field")
     let makeInput = document.querySelector("#car-make")
     let makeInfo = makeInput.value
     let modelInput = document.querySelector("#car-model")
     let modelInfo = modelInput.value
 
-    if (yearInfo !== "" && makeInfo !== "" && modelInfo !== "") {
-        //do something if it is valid
-        console.log("Name field valid")
-        parentEl.classList.remove("input-invalid")
-        parentEl.classList.add("input-valid")
-    } else {
+    document.getElementsByTagName("label")[1].setAttribute("id", "car-label");
+    let carLabel = document.querySelector("#car-label")
+
+    y = document.getElementById("car-year").value
+
+   
+    if (isNaN(y) || y < 1900 || y > 2020 || makeInfo === "" || modelInfo === "") {
         //do something else if it is invalid
-        console.log("Name field invalid")
+        console.log("Car field invalid")
         parentEl.classList.remove("input-valid")
         parentEl.classList.add("input-invalid")
+        carLabel.textContent = "Car information is required!"
         formIsValid = false
+    } else if (yearInfo !== "" && makeInfo !== "" && modelInfo !== "") {
+        //do something if it is valid
+        console.log("Car field valid")
+        parentEl.classList.remove("input-invalid")
+        parentEl.classList.add("input-valid")
     }
 }
 
@@ -63,15 +70,19 @@ function validateDate() {
     let dateInfo = dateInput.value 
     let parentEl = dateInput.parentElement
 
+    document.getElementsByTagName("label")[2].setAttribute("id", "date-label");
+    let dateLabel = document.querySelector("#date-label")
+
     if (dateInfo) {
         //do something if it is valid
-        console.log("Name field valid")
+        console.log("Date field valid")
         parentEl.classList.remove("input-invalid")
         parentEl.classList.add("input-valid")
     } else {
         //do something else if it is invalid
         console.log("Date field invalid")
         parentEl.classList.remove("input-valid")
+        dateLabel.textContent = "Date is required!"
         parentEl.classList.add("input-invalid")
         formIsValid = false
     }
@@ -82,15 +93,19 @@ function validateDays() {
     let daysInfo = daysInput.value 
     let parentEl = daysInput.parentElement
 
+    document.getElementsByTagName("label")[3].setAttribute("id", "days-label");
+    let daysLabel = document.querySelector("#days-label")
+
     if (daysInfo) {
         //do something if it is valid
-        console.log("Name field valid")
+        console.log("Days field valid")
         parentEl.classList.remove("input-invalid")
         parentEl.classList.add("input-valid")
     } else {
         //do something else if it is invalid
-        console.log("Name field invalid")
+        console.log("Days field invalid")
         parentEl.classList.remove("input-valid")
+        daysLabel.textContent = "Number of days is required!"
         parentEl.classList.add("input-invalid")
         formIsValid = false
     }
@@ -101,15 +116,19 @@ function validateCard() {
     let cardInfo = cardInput.value 
     let parentEl = cardInput.parentElement
 
+    document.getElementsByTagName("label")[4].setAttribute("id", "card-label");
+    let cardLabel = document.querySelector("#card-label")
+
     if (cardInfo) {
         //do something if it is valid
-        console.log("Name field valid")
+        console.log("Card field valid")
         parentEl.classList.remove("input-invalid")
         parentEl.classList.add("input-valid")
     } else {
         //do something else if it is invalid
-        console.log("Name field invalid")
+        console.log("Card field invalid")
         parentEl.classList.remove("input-valid")
+        cardLabel.textContent = "Credit card information is required!"
         parentEl.classList.add("input-invalid")
         formIsValid = false
     }
@@ -120,6 +139,9 @@ function validateCvv() {
     let cvvInfo = cvvInput.value 
     let parentEl = cvvInput.parentElement
 
+    document.getElementsByTagName("label")[5].setAttribute("id", "cvv-label");
+    let cvvLabel = document.querySelector("#cvv-label")
+
     if (cvvInfo) {
         //do something if it is valid
         console.log("Name field valid")
@@ -129,6 +151,7 @@ function validateCvv() {
         //do something else if it is invalid
         console.log("Name field invalid")
         parentEl.classList.remove("input-valid")
+        cvvLabel.textContent = "CVV is required!"
         parentEl.classList.add("input-invalid")
         formIsValid = false
     }
@@ -139,6 +162,9 @@ function validateExp() {
     let expInfo = expInput.value 
     let parentEl = expInput.parentElement
 
+    document.getElementsByTagName("label")[6].setAttribute("id", "exp-label");
+    let expLabel = document.querySelector("#exp-label")
+
     if (expInfo) {
         //do something if it is valid
         console.log("Name field valid")
@@ -148,6 +174,7 @@ function validateExp() {
         //do something else if it is invalid
         console.log("Name field invalid")
         parentEl.classList.remove("input-valid")
+        expLabel.textContent = "Expiration date is required!"
         parentEl.classList.add("input-invalid")
         formIsValid = false
     }
