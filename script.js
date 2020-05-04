@@ -1,7 +1,6 @@
 let form = document.querySelector("#parking-form")
 
 form.addEventListener("submit", function(event) {
-    event.preventDefault(); 
     validateName();
     validateDate();
     validateDays();
@@ -9,8 +8,8 @@ form.addEventListener("submit", function(event) {
     validateCvv();
     validateExp();
     validateCar();
+    event.preventDefault();
     giveCost();
-
 })
 
     function validateName() {
@@ -76,30 +75,6 @@ function validateDate() {
     let daysInput = document.querySelector("#days")
     let daysInfo = daysInput.value 
     dateInfo = new Date(dateInfo);
-    // let cost = 0
-    // let week = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
-    // for (i = 0; i < daysInfo; i++) {
-    //     if (day === 0 || day === 6) {
-    //         cost += 7;
-    //     }else {
-    //         cost += 5;
-    //     }
-    //     console.log(cost)
-    //     day = (day + 1) % 7
-    // }   
-
-    // window.alert(cost)
-    //start with info entered by user
-    //dateInfo is this info
-
-    //determine day of week for first day, which should be 0
-    // let firstDay = 0
-    // daysInfo should be part of the loop
-
-
-    //loop should be 30 days long- indicate index position?
-    //loop should be able to determine day of week for each index position
-    //loop should return how many weekdays and how many weekend days
 
     document.getElementsByTagName("label")[2].setAttribute("id", "date-label");
     let dateLabel = document.querySelector("#date-label")
@@ -117,9 +92,6 @@ function validateDate() {
         formIsValid = false 
     }
 }
-
-
-
 
 function validateDays() {
     let daysInput = document.querySelector("#days")
@@ -236,14 +208,13 @@ let dateInput = document.querySelector("#start-date")
     let cost = 0
     let week = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
     for (i = 0; i < daysInfo; i++) {
-        if (day === 0 || day === 6) {
+        if (day === 5 || day === 6) {
             cost += 7;
         }else {
             cost += 5;
         }
         console.log(cost)
-        day = (day + 1) % 7
-    }   
-
-    window.alert("The total cost is $" + cost)
+        day = (day % 7) + 1;
+    }  
+    window.alert("Your total is $" + cost + ".00")
 }
