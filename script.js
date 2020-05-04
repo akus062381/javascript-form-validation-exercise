@@ -9,6 +9,7 @@ form.addEventListener("submit", function(event) {
     validateCvv();
     validateExp();
     validateCar();
+    giveCost();
 
 })
 
@@ -20,7 +21,7 @@ form.addEventListener("submit", function(event) {
     document.getElementsByTagName("label")[0].setAttribute("id", "name-label");
     let nameLabel = document.querySelector("#name-label")
 
-    if (nameInfo) {
+    if (isNaN(nameInfo)) {
         //do something if it is valid
         console.log("Name field valid")
         parentEl.classList.remove("input-invalid")
@@ -69,15 +70,41 @@ function validateCar() {
 
 function validateDate() {
     let dateInput = document.querySelector("#start-date")
-    let dateInfo = dateInput.value 
+    let dateInfo = dateInput.valueAsNumber 
     let parentEl = dateInput.parentElement
-    let currentDate = new Date();
+    let day = new Date(dateInfo).getDay();
+    let daysInput = document.querySelector("#days")
+    let daysInfo = daysInput.value 
     dateInfo = new Date(dateInfo);
+    // let cost = 0
+    // let week = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+    // for (i = 0; i < daysInfo; i++) {
+    //     if (day === 0 || day === 6) {
+    //         cost += 7;
+    //     }else {
+    //         cost += 5;
+    //     }
+    //     console.log(cost)
+    //     day = (day + 1) % 7
+    // }   
+
+    // window.alert(cost)
+    //start with info entered by user
+    //dateInfo is this info
+
+    //determine day of week for first day, which should be 0
+    // let firstDay = 0
+    // daysInfo should be part of the loop
+
+
+    //loop should be 30 days long- indicate index position?
+    //loop should be able to determine day of week for each index position
+    //loop should return how many weekdays and how many weekend days
 
     document.getElementsByTagName("label")[2].setAttribute("id", "date-label");
     let dateLabel = document.querySelector("#date-label")
 
-    if (dateInfo > currentDate) {
+    if (dateInfo > day) {
         console.log("Date field valid")
         parentEl.classList.remove("input-invalid")
         dateLabel.textContent = "Date parking"
@@ -90,6 +117,9 @@ function validateDate() {
         formIsValid = false 
     }
 }
+
+
+
 
 function validateDays() {
     let daysInput = document.querySelector("#days")
@@ -123,19 +153,19 @@ function validateCard() {
     document.getElementsByTagName("label")[4].setAttribute("id", "card-label");
     let cardLabel = document.querySelector("#card-label")
 
-    if (cardInfo.length === 16) {
-        //do something if it is valid
-        console.log("Card field valid")
-        parentEl.classList.remove("input-invalid")
-        cardLabel.textContent = "Credit Card"
-        parentEl.classList.add("input-valid")
-    } else {
+    if (cardInfo.length < 16 || cardInfo.length > 16 || isNaN(cardInfo)) {
         //do something else if it is invalid
         console.log("Card field invalid")
         parentEl.classList.remove("input-valid")
         cardLabel.textContent = "Credit card must be 16 digits long"
         parentEl.classList.add("input-invalid")
         formIsValid = false
+    } else {
+        //do something if it is valid
+        console.log("Card field valid")
+        parentEl.classList.remove("input-invalid")
+        cardLabel.textContent = "Credit Card"
+        parentEl.classList.add("input-valid")
     }
 }
 
@@ -147,19 +177,19 @@ function validateCvv() {
     document.getElementsByTagName("label")[5].setAttribute("id", "cvv-label");
     let cvvLabel = document.querySelector("#cvv-label")
 
-    if (cvvInfo.length === 3) {
-        //do something if it is valid
-        console.log("Name field valid")
-        parentEl.classList.remove("input-invalid")
-        cvvLabel.textContent = "CVV"
-        parentEl.classList.add("input-valid")
-    } else {
+    if (cvvInfo.length < 3 || cvvInfo.length >3 || isNaN(cvvInfo)) {
         //do something else if it is invalid
         console.log("Name field invalid")
         parentEl.classList.remove("input-valid")
         cvvLabel.textContent = "CVV must be 3 digits"
         parentEl.classList.add("input-invalid")
         formIsValid = false
+    } else {
+        //do something if it is valid
+        console.log("Name field valid")
+        parentEl.classList.remove("input-invalid")
+        cvvLabel.textContent = "CVV"
+        parentEl.classList.add("input-valid")
     }
 }
 
@@ -195,3 +225,25 @@ function validateExp() {
     }
 }
 
+function giveCost() {
+let dateInput = document.querySelector("#start-date")
+    let dateInfo = dateInput.valueAsNumber 
+    let parentEl = dateInput.parentElement
+    let day = new Date(dateInfo).getDay();
+    let daysInput = document.querySelector("#days")
+    let daysInfo = daysInput.value 
+    dateInfo = new Date(dateInfo);
+    let cost = 0
+    let week = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+    for (i = 0; i < daysInfo; i++) {
+        if (day === 0 || day === 6) {
+            cost += 7;
+        }else {
+            cost += 5;
+        }
+        console.log(cost)
+        day = (day + 1) % 7
+    }   
+
+    window.alert("The total cost is $" + cost)
+}
