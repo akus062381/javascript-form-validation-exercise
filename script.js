@@ -206,7 +206,7 @@ let dateInput = document.querySelector("#start-date")
     let daysInfo = daysInput.value 
     dateInfo = new Date(dateInfo);
     let cost = 0
-    let week = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+    let week = new Array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
     for (i = 0; i < daysInfo; i++) {
         if (day === 5 || day === 6) {
             cost += 7;
